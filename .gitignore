@@ -1,0 +1,7 @@
+node_modules/
+typings/
+*.log
+APM/node_modules.rar
+.idea/AngularDirectiveCourse.iml
+.idea/workspace.xml
+.idea/modules.xml
