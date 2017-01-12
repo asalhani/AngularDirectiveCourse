@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular Template</title>
-    <link type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link type="text/css" href="../style.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
     <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" class="container" style="padding-top:30px">
+<a href="https://app.pluralsight.com/library/courses/angularjs-directive-fundamentals/table-of-contents">
+    Course URL:
+</a>
 
 <div ng-controller="mainCtrl">
     <!--<div user-info-card></div>-->
-    <user-info-card></user-info-card>
+    <user-info-card user="user1"></user-info-card>
+    <user-info-card user="user2"></user-info-card>
 </div>
 </body>
 </html>
