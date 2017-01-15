@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular Template</title>
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../style.css">
+    <link type="text/css" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" href="../style.css">
     <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../node_modules/angular/angular.js"></script>
@@ -13,8 +13,14 @@
 <body ng-app="myApp">
 
 <div ng-controller="mainCtrl">
-    <!--<div user-info-card></div>-->
-    <user-info-card></user-info-card>
+    <lable>Parent scope</lable>
+    <input type="text" ng-model="foo">
+    <br/><hr />
+    Test Dirant isolated scope attributes:
+    <test-dire simple-value='{{foo}}' complex-value='foo'"
+    update-parent-foo="updateFoo(newFoo)"></test-dire>
+
+
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Angular Template</title>
@@ -10,11 +10,12 @@
     <script type="text/javascript" src="../../node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
-<body ng-app="myApp">
+<body ng-controller="mainCtrl" class="container"
+      style="padding-top: 30px;">
+<audio id="vid" controls preload="none" spacebar-support
+    event-pause="handlePause()">
+    <source src="vid/song.mp3">
+</audio>
 
-<div ng-controller="mainCtrl">
-    <!--<div user-info-card></div>-->
-    <user-info-card></user-info-card>
-</div>
 </body>
 </html>
