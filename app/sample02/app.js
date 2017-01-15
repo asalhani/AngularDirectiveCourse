@@ -27,8 +27,7 @@ app.controller('mainCtrl', function ($scope) {
             'Chewbacca'
         ]
     };
-    // console.log('Controller scope: ');
-    // console.log($scope)
+
 
 });
 
@@ -39,15 +38,73 @@ app.directive('userInfoCard', function () {
         templateUrl: 'userTemplate.html',
         //scope: false,  // --> create shared scope (default)
         //scope: true,   // --> create inherited scope.
-        scope: {
-            user: '=' // --> tells directive that (user) (object) should be passed from html
-        },       // --> create isolated scope.
+        scope: {         // --> create isolated scope.
+            user: '=', // --> tells directive that (user) (object) should be passed from html
+            initilaCollapsed: '@collapsed', // angular will deal with this value as string. So we have to convert
+            // the value to a boolean on (collapsedState)
+        },
+
         controller: function ($scope) {
+
+            $scope.collapsed = ($scope.initilaCollapsed === 'true');
+
             $scope.knightMe = function (user) {
                 user.rank = "knight";
+            };
+
+            $scope.collapse = function () {
+                $scope.collapsed = !$scope.collapsed;
+            };
+
+            $scope.removeFriend = function (friend) {
+                var idx = $scope.user.friends.indexOf(friend);
+                if (idx > -1) {
+                    $scope.user.friends.splice(idx, 1);
+                }
+            };
+        }
+    };
+});
+
+app.directive('removeFriend', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'removeFriend.html',
+        scope:{
+              notifyParent: '&method'
+        },
+        controller: function ($scope) {
+            $scope.removing = false;
+
+            $scope.startRemove = function () {
+                $scope.removing = true;
+            };
+
+            $scope.cancelRemove = function () {
+                $scope.removing = false;
+            };
+
+            $scope.confirmRemove = function(){
+                $scope.notifyParent();
             }
-            // console.log('Directive scope:');
-            // console.log($scope)
+        }
+    }
+});
+
+app.directive('address', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'address.html',
+        scope: true,
+        controller: function ($scope) {
+            $scope.collapsed = false;
+            $scope.expandAddress = function () {
+                $scope.collapsed = false;
+            };
+
+            $scope.collapseAddress = function () {
+                $scope.collapsed = true;
+            };
         }
     };
 });
